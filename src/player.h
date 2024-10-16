@@ -7,6 +7,7 @@
 typedef struct {
     Rectangle hitBox;
     float velY;
+    float velX;
     float weight;
 } Player;
 

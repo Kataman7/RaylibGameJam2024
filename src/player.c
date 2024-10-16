@@ -5,6 +5,7 @@ Player createPlayer(int x, int y)
     Player player;
     player.hitBox = (Rectangle){x, y, 50, 50};
     player.velY = 0;
+    player.velX = 0;
     player.weight = 0.5;
     return player;
 }
@@ -40,6 +41,15 @@ void updatePlayer(Player *player, TileMap tileMap)
     if (playerCollidesWithTile(*player, tileMap))
     {
         player->velY = 0;
+        player->hitBox.x = previousX;
+    }
+
+    player->hitBox.x += player->velX;
+    player->velX *= 0.95;
+
+    if (playerCollidesWithTile(*player, tileMap))
+    {
+        player->velX = 0;
         player->hitBox.x = previousX;
     }
 }
