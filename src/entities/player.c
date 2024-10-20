@@ -1,4 +1,5 @@
 #include "player.h"
+#include "init.h"
 
 Player createPlayer(int x, int y)
 {
@@ -10,7 +11,7 @@ Player createPlayer(int x, int y)
     return player;
 }
 
-int playerCollidesWithTile(Player player, TileMap tileMap)
+int playerCollidesWithTile()
 {
     int blockX = player.hitBox.x / tileMap.tileSize;
     int blockY = player.hitBox.y / tileMap.tileSize;
@@ -30,26 +31,26 @@ int playerCollidesWithTile(Player player, TileMap tileMap)
     }
 }
 
-void updatePlayer(Player *player, TileMap tileMap)
+void updatePlayer()
 {
-    float previousX = player->hitBox.x;
-    float previousY = player->hitBox.y;
+    float previousX = player.hitBox.x;
+    float previousY = player.hitBox.y;
 
-    player->hitBox.x += player->velY;
-    player->velY *= player->weight;
+    player.hitBox.x += player.velY;
+    player.velY *= player.weight;
 
-    if (playerCollidesWithTile(*player, tileMap))
+    if (playerCollidesWithTile())
     {
-        player->velY = 0;
-        player->hitBox.x = previousX;
+        player.velY = 0;
+        player.hitBox.y = previousY;
     }
 
-    player->hitBox.x += player->velX;
-    player->velX *= 0.95;
+    player.hitBox.x += player.velX;
+    player.velX *= 0.95;
 
-    if (playerCollidesWithTile(*player, tileMap))
+    if (playerCollidesWithTile())
     {
-        player->velX = 0;
-        player->hitBox.x = previousX;
+        player.velX = 0;
+        player.hitBox.x = previousX;
     }
 }

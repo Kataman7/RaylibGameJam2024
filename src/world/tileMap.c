@@ -1,4 +1,4 @@
-#include "tileMap.h"
+#include "../core/init.h"
 
 Tile createTile(int x, int y, int size, int type, int id)
 {
@@ -17,9 +17,11 @@ TileMap createTileMap(int width, int height, int tileSize)
     tileMap.height = height;
     tileMap.tileSize = tileSize;
 
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            setTile(tileMap, x, y, createTile(x * tileSize, y * tileSize, tileSize, 0, 0));
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            setTile(tileMap, x, y, TILE_VOID);
         }
     }
 
@@ -31,9 +33,11 @@ Tile getTile(TileMap tileMap, int x, int y)
     return tileMap.tiles[y * tileMap.width + x];
 }
 
-void setTile(TileMap tileMap, int x, int y, Tile tile)
+void setTile(TileMap tileMap, int x, int y, TileID tileID)
 {
-    tileMap.tiles[y * tileMap.width + x] = tile;
+    tileMap.tiles[y * tileMap.width + x] = createTile(
+        x * tileMap.tileSize, y * tileMap.tileSize, tileMap.tileSize,
+        TILE_GROUND, tileID);
 }
 
 void drawTileMap(TileMap tileMap)

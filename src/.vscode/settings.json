@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "init.h": "c",
+        "tilemap.h": "c",
+        "player.h": "c"
+    }
+}
