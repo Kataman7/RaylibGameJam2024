@@ -48,7 +48,7 @@ void DrawTileMap(TileMap tileMap)
         {
             DrawRectangleRec(GetTile(tileMap, x, y).hitBox, WHITE);
             Tile tile = GetTile(tileMap, x, y);
-            DrawEntity(tile.hitBox, tile.textureRec);
+            DrawEntity(tile.textureRec.texture, tile.hitBox);
         }
     }
 }
