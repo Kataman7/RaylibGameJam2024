@@ -1,6 +1,6 @@
 #include "../core/init.h"
 
-Tile createTile(int x, int y, int size, int type, int id)
+Tile GreateTile(int x, int y, int size, int type, int id)
 {
     Tile tile;
     tile.hitBox = (Rectangle){x, y, size, size};
@@ -9,7 +9,7 @@ Tile createTile(int x, int y, int size, int type, int id)
     return tile;
 }
 
-TileMap createTileMap(int width, int height, int tileSize)
+TileMap CreateTileMap(int width, int height, int tileSize)
 {
     TileMap tileMap;
     tileMap.tiles = (Tile *)malloc(width * height * sizeof(Tile));
@@ -21,32 +21,34 @@ TileMap createTileMap(int width, int height, int tileSize)
     {
         for (int x = 0; x < width; x++)
         {
-            setTile(tileMap, x, y, TILE_VOID);
+            SetTile(tileMap, x, y, TILE_VOID);
         }
     }
 
     return tileMap;
 }
 
-Tile getTile(TileMap tileMap, int x, int y)
+Tile GetTile(TileMap tileMap, int x, int y)
 {
     return tileMap.tiles[y * tileMap.width + x];
 }
 
-void setTile(TileMap tileMap, int x, int y, TileID tileID)
+void SetTile(TileMap tileMap, int x, int y, TileID tileID)
 {
-    tileMap.tiles[y * tileMap.width + x] = createTile(
+    tileMap.tiles[y * tileMap.width + x] = GreateTile(
         x * tileMap.tileSize, y * tileMap.tileSize, tileMap.tileSize,
         TILE_GROUND, tileID);
 }
 
-void drawTileMap(TileMap tileMap)
+void DrawTileMap(TileMap tileMap)
 {
     for (int y = 0; y < tileMap.height; y++)
     {
         for (int x = 0; x < tileMap.width; x++)
         {
-            DrawRectangleRec(getTile(tileMap, x, y).hitBox, WHITE);
+            DrawRectangleRec(GetTile(tileMap, x, y).hitBox, WHITE);
+            Tile tile = GetTile(tileMap, x, y);
+            DrawEntity(tile.hitBox, tile.textureRec);
         }
     }
 }

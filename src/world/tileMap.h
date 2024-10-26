@@ -5,13 +5,13 @@
 
 typedef struct {
     Rectangle hitBox;
+    TextureRec textureRec;
     int type;
     int id;
 } Tile;
 
 typedef struct {
     Tile *tiles;
-    TextureRec textureRec;
     int width;
     int height;
     int tileSize;
@@ -30,11 +30,11 @@ typedef enum TileState
 } TileState;
 
 
-Tile createTile(int x, int y, int size, int type, int id);
-TileMap createTileMap(int width, int height, int tileSize);
-Tile getTile(TileMap tileMap, int x, int y);
-void setTile(TileMap tileMap, int x, int y, TileID tile);
-void drawTileMap(TileMap tileMap);
+Tile GreateTile(int x, int y, int size, int type, int id);
+TileMap CreateTileMap(int width, int height, int tileSize);
+Tile GetTile(TileMap tileMap, int x, int y);
+void SetTile(TileMap tileMap, int x, int y, TileID tile);
+void DrawTileMap(TileMap tileMap);
 
 
 #endif

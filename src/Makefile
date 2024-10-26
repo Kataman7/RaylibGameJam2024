@@ -29,10 +29,10 @@
 PLATFORM              ?= PLATFORM_DESKTOP
 
 # Define project variables
-PROJECT_NAME          ?= raylib_game
+PROJECT_NAME          ?= game
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .
-PROJECT_SOURCE_FILES  ?= raylib_game.c
+PROJECT_SOURCE_FILES  ?= main.c core/game.c core/init.c core/render.c world/tileMap.c entities/player.c core/input.c
 
 # raylib library variables
 RAYLIB_SRC_PATH       ?= ../../raylib/src
@@ -46,7 +46,7 @@ RAYLIB_LIBTYPE        ?= STATIC
 COMPILER_PATH         ?= C:\raylib\w64devkit\bin
 
 # Build mode for project: DEBUG or RELEASE
-BUILD_MODE            ?= RELEASE
+BUILD_MODE            ?= DEBUG
 
 # PLATFORM_WEB: Default properties
 BUILD_WEB_ASYNCIFY    ?= FALSE
@@ -155,7 +155,7 @@ endif
 #  -Wno-missing-braces  ignore invalid warning (GCC bug 53119)
 #  -Wno-unused-value    ignore unused return values of some functions (i.e. fread())
 #  -D_DEFAULT_SOURCE    use with -std=c99 on Linux and PLATFORM_WEB, required for timespec
-CFLAGS = -std=c99 -Wall -Wno-missing-braces -Wno-unused-value -Wno-pointer-sign -D_DEFAULT_SOURCE $(PROJECT_CUSTOM_FLAGS)
+CFLAGS = -std=c99 -Wall -Wno-missing-braces -Wno-unused-value -Wno-pointer-sign -D_DEFAULT_SOURCE $(PROJECT_CUSTOM_FLAGS) -g -Wall
 #CFLAGS += -Wextra -Wmissing-prototypes -Wstrict-prototypes
 
 ifeq ($(BUILD_MODE),DEBUG)

@@ -1,11 +1,15 @@
 //Gestion des entrées utilisateur (clavier, souris, etc.)
 #include "init.h"
 
-void inputUpdate()
+void UpdateInput()
 {
-    if (IsKeyDown(KEY_SPACE))
+    if (IsKeyPressed(KEY_SPACE))
     {
-        player.velY = 10;
+        if (player.jumpCount < player.jumpMax)
+        {
+            player.velY = -10;
+            player.jumpCount++;
+        }
     }
     if (IsKeyDown(KEY_A))
     {
@@ -17,7 +21,10 @@ void inputUpdate()
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
+        printf("Mouse left button pressed\n");
+        /*
         Vector2 pos = GetScreenToWorld2D(GetMousePosition(), camera);
-        setTile(tileMap, (int) (pos.x / tileMap.tileSize), (int) (pos.y / tileMap.tileSize), TILE_VOID);
+        SetTile(tileMap, (int) (pos.x / tileMap.tileSize), (int) (pos.y / tileMap.tileSize), TILE_VOID);
+        */
     }
 }

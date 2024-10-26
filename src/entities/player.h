@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "../core/init.h"
+#include "../world/tileMap.h"
 
 typedef struct {
     Rectangle hitBox;
@@ -9,10 +10,12 @@ typedef struct {
     float velY;
     float velX;
     float weight;
+    int jumpMax;
+    int jumpCount;
 } Player;
 
-Player createPlayer(int x, int y);
-int playerCollidesWithTile(Player player, TileMap tileMap);
-void updatePlayer(Player *player, TileMap tileMap);
+Player CreatePlayer(int x, int y);
+int PlayerCollidesWithTile();
+void UpdatePlayer();
 
 #endif
