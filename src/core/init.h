@@ -8,6 +8,7 @@
 #include "input.h"
 #include "game.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 extern Player player;
 extern TileMap tileMap;

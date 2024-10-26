@@ -6,9 +6,12 @@ Player CreatePlayer(int x, int y)
     player.hitBox = (Rectangle){x, y, 50, 50};
     player.velY = 0;
     player.velX = 0;
-    player.weight = 0.5;
+    player.weight = 0.8;
     player.jumpMax = 2;
     player.jumpCount = 0;
+    player.jumpForce = 20;
+    player.speed = 2;
+    player.friction = 0.80f;
     return player;
 }
 
@@ -23,10 +26,7 @@ int PlayerCollidesWithTile()
         {
             if (CheckCollisionRecs(player.hitBox, GetTile(tileMap, x, y).hitBox))
             {
-                if (GetTile(tileMap, x, y).type == 1)
-                {
-                    return 1;
-                }
+                if (GetTile(tileMap, x, y).type == 1) return 1;
             }
         }
     }
@@ -64,7 +64,7 @@ void UpdatePlayer()
     }
 
     player.hitBox.x += player.velX;
-    player.velX *= 0.95;
+    player.velX *= player.friction;
 
     if (PlayerCollidesWithBackground())
     {

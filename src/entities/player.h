@@ -12,6 +12,9 @@ typedef struct {
     float weight;
     int jumpMax;
     int jumpCount;
+    int jumpForce;
+    int speed;
+    float friction;
 } Player;
 
 Player CreatePlayer(int x, int y);
