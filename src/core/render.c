@@ -13,6 +13,20 @@ TextureRec CreateTextureRec(char* imagePath)
     return textureRec;
 }
 
+TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frames)
+{
+    TextureRecAnimated textureRecAnimated;
+    textureRecAnimated.textures = malloc(sizeof(Texture2D) * frames);
+    for (int i = 0; i < frames; i++)
+    {
+        char framePath[100];
+        sprintf(framePath, "%s%d.png", imagePath, i);
+        textureRecAnimated.textures[i] = LoadTexture(framePath);
+    }
+    textureRecAnimated.textureRec = (TextureRec){textureRecAnimated.textures[0], (Rectangle){0, 0, textureRecAnimated.textures[0].width, textureRecAnimated.textures[0].height}};
+    return textureRecAnimated;
+}
+
 ImageColors CreateImageColors(char* imagePath)
 {
     ImageColors imageColor;

@@ -10,8 +10,8 @@ Player CreatePlayer(int x, int y)
     player.jumpMax = 2;
     player.jumpCount = 0;
     player.jumpForce = 20;
-    player.speed = 2;
-    player.friction = 0.80f;
+    player.speed = 2.5f;
+    player.friction = 0.75;
     return player;
 }
 
@@ -40,10 +40,7 @@ int PlayerCollidesWithBackground()
     {
         Vector2 point = {player.hitBox.x + (i % 2) * player.hitBox.width, player.hitBox.y + (i / 2) * player.hitBox.height};
         Color color = backgroundColors.colors[(int)point.x + (int)point.y * backgroundColors.image.width];
-        if (color.r == 0 && color.g == 0 && color.b == 0)
-        {
-            return 1;
-        }
+        if (color.r == 0 && color.g == 0 && color.b == 0) return 1;
     }
     return 0;
 }
@@ -58,7 +55,7 @@ void UpdatePlayer()
 
     if (PlayerCollidesWithBackground())
     {
-        player.velY = - player.velY / 5;
+        player.velY = 0;
         player.hitBox.y = previousY;
         player.jumpCount = 0;
     }
@@ -68,7 +65,7 @@ void UpdatePlayer()
 
     if (PlayerCollidesWithBackground())
     {
-        player.velX = - player.velX / 5;
+        player.velX = 0;
         player.hitBox.x = previousX;
     }
 }

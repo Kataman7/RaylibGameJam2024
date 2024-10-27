@@ -13,7 +13,14 @@ typedef struct {
     Color* colors;
 } ImageColors;
 
+typedef struct {
+    TextureRec textureRec;
+    Texture2D* textures;
+    int frameCount;
+} TextureRecAnimated;
+
 TextureRec CreateTextureRec(char* imagePath);
+TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frameCount);
 ImageColors CreateImageColors(char* imagePath);
 void UnloadTextureRec(TextureRec textureRec);
 void DrawEntity(Texture2D texture, Rectangle sourceRec);

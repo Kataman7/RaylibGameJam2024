@@ -24,4 +24,5 @@ void Init()
     camera.zoom = 1.0f;
     backgroundTexture = CreateTextureRec(SOURCE_PATH "/resources/bg.png");
     backgroundColors = CreateImageColors(SOURCE_PATH "/resources/bg.png");
+    
 }
