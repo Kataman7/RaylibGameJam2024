@@ -1,8 +1,8 @@
 #include "init.h"
 
-void DrawEntity(Texture2D texture, Rectangle sourceRec)
+void DrawEntity(TextureRec textureRec, Rectangle entityHitbox)
 {
-    DrawTextureRec(texture, sourceRec, vectorNull, WHITE);
+    DrawTexturePro(textureRec.texture, textureRec.sourceRec, entityHitbox, vectorNull, 0, WHITE);
 }
 
 TextureRec CreateTextureRec(char* imagePath)

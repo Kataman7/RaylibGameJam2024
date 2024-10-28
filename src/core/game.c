@@ -14,7 +14,10 @@ void UpdateGame()
 void DrawGame()
 {
     DrawTextureRec(backgroundTexture.texture, backgroundTexture.sourceRec, vectorNull, WHITE);
-    DrawTextureRec(texturePlayerIdle.textureRec.texture, texturePlayerIdle.textureRec.sourceRec, vectorNull, WHITE);
+
+    DrawEntity(texturePlayerIdle.textureRec, player.entity.hitBox);
+   // DrawRectangleRec(player.entity.hitBox, BLUE);
+
     DrawRectangleRec(boss.entity.hitBox, RED);
 }
 
