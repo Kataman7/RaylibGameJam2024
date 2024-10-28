@@ -2,13 +2,15 @@
 
 #define SOURCE_PATH "src"
 
+
 Player player;
 Camera2D camera;
 TextureRec backgroundTexture;
 ImageColors backgroundColors;
 Vector2 vectorNull = {0, 0};
-int seconds;
+long int frameCount = 0;
 Boss boss;
+TextureRecAnimated texturePlayerIdle;
 
 void Init()
 {
@@ -24,6 +26,7 @@ void Init()
     camera.zoom = 1.0f;
     backgroundTexture = CreateTextureRec(SOURCE_PATH "/resources/bg.png");
     backgroundColors = CreateImageColors(SOURCE_PATH "/resources/bg.png");
-    seconds = 0;
+    frameCount = 0;
     boss = CreateBoss(1000, 500);
+    texturePlayerIdle = CreateTextureRecAnimated(SOURCE_PATH "/resources/player/player_idle", 2);
 }

@@ -3,10 +3,11 @@
 Player CreatePlayer(int x, int y)
 {
     Player player;
-    player.entity = CreateEntity(x, y, 0, 0, 0.5, 0.9, 5);
+    player.entity = CreateEntity(x, y, 0, 0, 0.5, 0.9);
     player.jumpMax = 2;
     player.jumpCount = 0;
     player.jumpForce = 20;
+    player.speed = 2;
     return player;
 }
 

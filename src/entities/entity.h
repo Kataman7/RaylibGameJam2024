@@ -10,10 +10,9 @@ typedef struct {
     float velX;
     float weight;
     float friction;
-    float speed;
 } Entity;
 
-Entity CreateEntity(int x, int y, float velY, float velX, float weight, float friction, float speed);
+Entity CreateEntity(int x, int y, float velY, float velX, float weight, float friction);
 int EntityCollidesWithBackground(Entity entity);
 
 #endif

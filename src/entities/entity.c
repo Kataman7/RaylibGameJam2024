@@ -1,6 +1,6 @@
 #include "../core/init.h"
 
-Entity CreateEntity(int x, int y, float velY, float velX, float weight, float friction, float speed)
+Entity CreateEntity(int x, int y, float velY, float velX, float weight, float friction)
 {
     Entity entity;
     entity.hitBox = (Rectangle){x, y, 50, 50};
@@ -8,7 +8,6 @@ Entity CreateEntity(int x, int y, float velY, float velX, float weight, float fr
     entity.velX = velX;
     entity.weight = weight;
     entity.friction = friction;
-    entity.speed = speed;
     return entity;
 }
 

@@ -16,8 +16,9 @@ extern Vector2 vectorNull;
 extern Camera2D camera;
 extern TextureRec backgroundTexture;
 extern ImageColors backgroundColors;
-extern int seconds;
+extern long int frameCount;
 extern Boss boss;
+extern TextureRecAnimated texturePlayerIdle;
 
 void Init();
 

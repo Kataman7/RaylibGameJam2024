@@ -5,6 +5,7 @@
 
 typedef struct {
     Entity entity;
+    int speed;
     int jumpMax;
     int jumpCount;
     int jumpForce;

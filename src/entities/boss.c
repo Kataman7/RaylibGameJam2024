@@ -1,26 +1,66 @@
 #include "../core/init.h"
+#include "math.h"
 
 Boss CreateBoss(int x, int y)
 {
     Boss boss;
-    boss.entity = CreateEntity(x, y, 0, 0, 0.5, 0.9, 5);
+    boss.entity = CreateEntity(x, y, 0, 0, 0.5, 0.9);
     return boss;
+}
+
+void BossDashRight()
+{
+    boss.entity.velX += 20;
+}
+
+void BossDashLeft()
+{
+    boss.entity.velX -= 20;
+}
+
+void BossDash(Vector2 direction)
+{
+    float length = sqrt(direction.x * direction.x + direction.y * direction.y);
+    if (length != 0) {
+        direction.x /= length;
+        direction.y /= length;
+    }
+
+    boss.entity.velX = direction.x * 20;
+    boss.entity.velY = direction.y * 20;
+}
+
+void BossDashPlayer()
+{
+    BossDash((Vector2){player.entity.hitBox.x - boss.entity.hitBox.x, player.entity.hitBox.y - boss.entity.hitBox.y});
+}
+
+void BossDashCenter()
+{
+    BossDash((Vector2) {500, 100});
 }
 
 void runPatern()
 {
-    if (seconds == 0)
+    if (frameCount == 0)
     {
-        boss.entity.velX += 5;
+        BossDashRight();
     }
-    else if (seconds == 4)
+    else if (frameCount == 60 * 4)
     {
-        boss.entity.velY -= 5;
+        BossDashLeft();
     }
-    else if (seconds == 7 || seconds == 9 || seconds == 10) 
+    else if (frameCount == 60 * 7) 
     {
-        boss.entity.velY += 1;
-        boss.entity.velX += 1;
+        BossDashPlayer();
+    }
+    else if (frameCount == 60 * 10)
+    {
+        BossDashCenter();
+    }
+    else if (frameCount == 60 * 13)
+    {
+        BossDashPlayer();
     }
 }
 

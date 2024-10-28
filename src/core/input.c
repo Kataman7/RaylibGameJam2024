@@ -13,11 +13,11 @@ void UpdateInput()
     }
     if (IsKeyDown(KEY_A))
     {
-        player.entity.velX -= player.entity.speed;
+        player.entity.velX -= player.speed;
     }
     if (IsKeyDown(KEY_D))
     {
-        player.entity.velX += player.entity.speed;
+        player.entity.velX += player.speed;
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
