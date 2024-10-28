@@ -2,23 +2,16 @@
 #define PLAYER_H
 
 #include "../core/init.h"
-#include "../world/tileMap.h"
 
 typedef struct {
-    Rectangle hitBox;
-    TextureRec textureRec;
-    float velY;
-    float velX;
-    float weight;
+    Entity entity;
     int jumpMax;
     int jumpCount;
     int jumpForce;
-    float speed;
-    float friction;
+    TextureRec textureRec;
 } Player;
 
 Player CreatePlayer(int x, int y);
-int PlayerCollidesWithTile();
 void UpdatePlayer();
 
 #endif

@@ -7,17 +7,17 @@ void UpdateInput()
     {
         if (player.jumpCount < player.jumpMax)
         {
-            player.velY = -player.jumpForce;
+            player.entity.velY = -player.jumpForce;
             player.jumpCount++;
         }
     }
     if (IsKeyDown(KEY_A))
     {
-        player.velX -= player.speed;
+        player.entity.velX -= player.entity.speed;
     }
     if (IsKeyDown(KEY_D))
     {
-        player.velX += player.speed;
+        player.entity.velX += player.entity.speed;
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {

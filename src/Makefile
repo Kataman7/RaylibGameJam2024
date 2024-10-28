@@ -32,7 +32,7 @@ PLATFORM              ?= PLATFORM_DESKTOP
 PROJECT_NAME          ?= game
 PROJECT_VERSION       ?= 1.0
 PROJECT_BUILD_PATH    ?= .
-PROJECT_SOURCE_FILES  ?= main.c core/game.c core/init.c core/render.c world/tileMap.c entities/player.c core/input.c
+PROJECT_SOURCE_FILES  ?= main.c core/game.c core/init.c core/render.c entities/entity.c entities/player.c entities/boss.c core/input.c
 
 # raylib library variables
 RAYLIB_SRC_PATH       ?= ../../raylib/src
