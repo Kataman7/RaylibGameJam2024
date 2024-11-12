@@ -18,8 +18,8 @@
     #define LOG(...)
 #endif
 
-static const int screenWidth = 1280;
-static const int screenHeight = 720;
+static const int screenWidth = 800;
+static const int screenHeight = screenWidth * 9 / 16;
 
 static RenderTexture2D target = { 0 };  
 static void UpdateDrawFrame(void);
@@ -53,7 +53,7 @@ void UpdateDrawFrame(void)
     UpdateGame();
 
     BeginTextureMode(target);
-        ClearBackground(RAYWHITE);        
+        ClearBackground(BLACK);        
         BeginMode2D(camera);
             DrawGame();
         EndMode2D();

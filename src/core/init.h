@@ -3,9 +3,7 @@
 
 #include "raylib.h"
 #include "render.h"
-#include "../entities/entity.h"
-#include "../entities/player.h"
-#include "../entities/boss.h"
+#include "player.h"
 #include "input.h"
 #include "game.h"
 #include "stdio.h"
@@ -16,9 +14,8 @@ extern Vector2 vectorNull;
 extern Camera2D camera;
 extern TextureRec backgroundTexture;
 extern ImageColors backgroundColors;
-extern long int frameCount;
-extern Boss boss;
-extern TextureRecAnimated texturePlayerIdle;
+extern TextureRec texturePlayerIdle;
+extern TextureRecAnimated texturePlayerRun;
 
 void Init();
 

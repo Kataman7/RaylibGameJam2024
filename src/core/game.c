@@ -3,22 +3,18 @@
 
 void UpdateGame()
 {
-    camera.target = (Vector2){player.entity.hitBox.x, player.entity.hitBox.y};
+    camera.target = (Vector2){player.hitBox.x, player.hitBox.y};
     UpdatePlayer();
     UpdateInput();
-    UpdateBoss();
-
-    frameCount++;
+    UpdateTextureRecAnimated(&texturePlayerRun, 5);
 }
 
 void DrawGame()
 {
     DrawTextureRec(backgroundTexture.texture, backgroundTexture.sourceRec, vectorNull, WHITE);
-
-    DrawEntity(texturePlayerIdle.textureRec, player.entity.hitBox);
-   // DrawRectangleRec(player.entity.hitBox, BLUE);
-
-    DrawRectangleRec(boss.entity.hitBox, RED);
+    DrawEntity(*player.textureRec, player.hitBox);
+    //DrawRectangleRec(player.hitBox, BLUE);
+   
 }
 
 void CloseGame()

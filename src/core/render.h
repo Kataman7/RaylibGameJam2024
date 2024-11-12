@@ -16,13 +16,16 @@ typedef struct {
 typedef struct {
     TextureRec textureRec;
     Texture2D* textures;
-    int frameCount;
+    int frames;
+    int currentFrame;
+    int frameSpeed;
 } TextureRecAnimated;
 
 TextureRec CreateTextureRec(char* imagePath);
-TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frameCount);
+TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frameCount, int frameSpeed);
 ImageColors CreateImageColors(char* imagePath);
 void UnloadTextureRec(TextureRec textureRec);
 void DrawEntity(TextureRec texture, Rectangle sourceRec);
+void UpdateTextureRecAnimated(TextureRecAnimated* textureRecAnimated, int frames);
 
 #endif

@@ -5,6 +5,7 @@
         "player.h": "c",
         "raylib.h": "c",
         "input.h": "c",
-        "game.h": "c"
+        "game.h": "c",
+        "render.h": "c"
     }
 }

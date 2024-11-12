@@ -5,19 +5,19 @@ void UpdateInput()
 {
     if (IsKeyPressed(KEY_SPACE))
     {
-        if (player.jumpCount < player.jumpMax)
+        if (player.jumpCount < 2)
         {
-            player.entity.velY = -player.jumpForce;
+            player.velY = -player.jumpForce;
             player.jumpCount++;
         }
     }
     if (IsKeyDown(KEY_A))
     {
-        player.entity.velX -= player.speed;
+        player.velX -= player.speed;
     }
     if (IsKeyDown(KEY_D))
     {
-        player.entity.velX += player.speed;
+        player.velX += player.speed;
     }
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {

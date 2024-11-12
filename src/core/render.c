@@ -13,7 +13,7 @@ TextureRec CreateTextureRec(char* imagePath)
     return textureRec;
 }
 
-TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frames)
+TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frames, int frameSpeed)
 {
     TextureRecAnimated textureRecAnimated;
     textureRecAnimated.textures = malloc(sizeof(Texture2D) * frames);
@@ -24,6 +24,9 @@ TextureRecAnimated CreateTextureRecAnimated(char* imagePath, int frames)
         textureRecAnimated.textures[i] = LoadTexture(framePath);
     }
     textureRecAnimated.textureRec = (TextureRec){textureRecAnimated.textures[0], (Rectangle){0, 0, textureRecAnimated.textures[0].width, textureRecAnimated.textures[0].height}};
+    textureRecAnimated.frames = frames;
+    textureRecAnimated.currentFrame = 0;
+    textureRecAnimated.frameSpeed = frameSpeed;
     return textureRecAnimated;
 }
 
@@ -38,4 +41,19 @@ ImageColors CreateImageColors(char* imagePath)
 void UnloadTextureRec(TextureRec textureRec)
 {
     UnloadTexture(textureRec.texture);
+}
+
+void UpdateTextureRecAnimated(TextureRecAnimated* textureRecAnimated, int frames)
+{
+    textureRecAnimated->frames++;
+    if (textureRecAnimated->frames >= textureRecAnimated->frameSpeed)
+    {
+        textureRecAnimated->frames = 0;
+        textureRecAnimated->currentFrame++;
+        if (textureRecAnimated->currentFrame >= frames)
+        {
+            textureRecAnimated->currentFrame = 0;
+        }
+        textureRecAnimated->textureRec = (TextureRec){textureRecAnimated->textures[textureRecAnimated->currentFrame], (Rectangle){0, 0, textureRecAnimated->textures[textureRecAnimated->currentFrame].width, textureRecAnimated->textures[textureRecAnimated->currentFrame].height}};
+    }
 }
