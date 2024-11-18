@@ -1,6 +1,6 @@
 #include "init.h"
 
-#define SOURCE_PATH "src"
+#define SOURCE_PATH "."
 
 Player player;
 Camera2D camera;
@@ -14,7 +14,6 @@ void Init()
 {
     SetTraceLogLevel(LOG_ALL);
     printf("Initialisation du jeu\n");
-
     player = CreatePlayer(50, 50);
     vectorNull = (Vector2){0, 0};
     camera = (Camera2D){0};
